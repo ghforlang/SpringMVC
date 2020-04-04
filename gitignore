@@ -3,13 +3,13 @@
 
 
 /target/
-.idea
-/.idea
-out
+.idea/
+out/
+lib/
 
 
 #.iml文件
-*.iml
+.iml
 
 # Log file
 *.log

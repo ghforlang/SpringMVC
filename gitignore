@@ -9,7 +9,7 @@ lib/
 
 
 #.iml文件
-.iml
+*.iml
 
 # Log file
 *.log

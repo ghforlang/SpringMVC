@@ -6,4 +6,19 @@
 
     <!-- 使用dbcp连接池 -->
     <import resource="classpath*:datasource/dbcp-datasource.xml"/>
+
+    <!-- 使用spring连接池 -->
+    <import resource="classpath*:datasource/spring-datasource.xml"/>
+
+
+    <!--使用druid连接池 -->
+    <import resource="classpath*:datasource/druid-datasource.xml"/>
+
+    <!--测试用 -->
+    <bean id="dbUtils" class="com.edu.nbu.common.utils.DBUtils">
+        <property name="dbcpDatasource" ref="dbcpDataSource"/>
+        <property name="springDatasource" ref="springDataSource"/>
+        <property name="druidDataSource" ref="druidDataSource"/>
+    </bean>
+
 </beans>

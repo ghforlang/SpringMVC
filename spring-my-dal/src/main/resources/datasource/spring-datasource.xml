@@ -12,7 +12,7 @@
         </property>
     </bean>
     <!-- spring 自带数据源 -->
-    <bean id="dataSource"
+    <bean id="springDataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="${driverClassName}" />
         <property name="url" value="${url}" />
@@ -21,7 +21,7 @@
     </bean>
 
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-        <property name="dataSource" ref="dataSource"></property>
+        <property name="dataSource" ref="springDataSource"/>
     </bean>
 
 

@@ -12,7 +12,7 @@
     </bean>
 
     <!-- dataSource 注入-->
-    <bean id ="dataSource" class ="org.apache.commons.dbcp.BasicDataSource">
+    <bean id ="dbcpDataSource" class ="org.apache.commons.dbcp2.BasicDataSource">
         <property name="driverClassName" value ="${driverClassName}"></property>
         <property name="url" value="${url}"></property>
         <property name="username" value="${username}"></property>
@@ -25,14 +25,15 @@
         <!--minIdle: 最小空闲连接-->
         <property name="minIdle" value="5"/>
         <!--maxActive: 最大连接数量-->
-        <property name="maxActive" value="15"/>
+        <property name="maxTotal" value="15"/>
         <!--removeAbandoned: 是否自动回收超时连接-->
-        <property name="removeAbandoned" value="true"/>
+        <property name="removeAbandonedOnMaintenance" value="false"/>
         <!--removeAbandonedTimeout: 超时时间(以秒数为单位)-->
         <property name="removeAbandonedTimeout" value="180"/>
         <!--maxWait: 超时等待时间以毫秒为单位 6000毫秒/1000等于60秒-->
-        <property name="maxWait" value="3000"/>
+        <property name="maxWaitMillis" value="3000"/>
         <property name="validationQuery" value="SELECT 1"/>
         <property name="testOnBorrow" value="true"/>
     </bean>
+
 </beans>

@@ -9,7 +9,7 @@ import javax.persistence.Id;
 /**
  * Created by lenovo on 2017/1/10.
  */
-@Entity
+//@Entity
 public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)

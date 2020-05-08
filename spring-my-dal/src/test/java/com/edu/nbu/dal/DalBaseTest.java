@@ -1,5 +1,6 @@
 package com.edu.nbu.dal;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -9,11 +10,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @ContextConfiguration(locations = {"classpath*:mybatis/mybatis-config.xml"})
 @RunWith(value = SpringJUnit4ClassRunner.class)
+@Slf4j
 public class DalBaseTest {
-    private static final Logger LOGGER = LoggerFactory.getLogger(DalBaseTest.class);
 
     @Test
     public void baseTest(){
-        LOGGER.info("this is DalBaseTest");
+        log.info("this is DalBaseTest");
     }
 }

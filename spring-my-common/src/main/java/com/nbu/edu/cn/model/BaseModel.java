@@ -1,4 +1,4 @@
 package com.nbu.edu.cn.model;
 
-public class BaseModel {
+public class BaseModel implements Model{
 }

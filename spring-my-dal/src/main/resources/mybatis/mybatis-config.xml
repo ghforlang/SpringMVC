@@ -1,24 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
 
-
-    <!-- 使用dbcp连接池 -->
-    <import resource="classpath*:datasource/dbcp-datasource.xml"/>
-
-    <!-- 使用spring连接池 -->
-    <import resource="classpath*:datasource/spring-datasource.xml"/>
-
-
-    <!--使用druid连接池 -->
-    <import resource="classpath*:datasource/druid-datasource.xml"/>
-
-    <!--测试用 -->
-    <bean id="dbUtils" class="com.edu.nbu.common.utils.DBUtils">
-        <property name="dbcpDatasource" ref="dbcpDataSource"/>
-        <property name="springDatasource" ref="springDataSource"/>
-        <property name="druidDataSource" ref="druidDataSource"/>
-    </bean>
-
-</beans>
+    <settings>
+        <setting name="cacheEnabled" value="false"/>
+    </settings>
+</configuration>

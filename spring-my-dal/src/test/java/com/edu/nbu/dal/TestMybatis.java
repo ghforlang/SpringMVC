@@ -15,7 +15,8 @@ public class TestMybatis extends DalBaseTest{
 
     @Test
     public void testDbcpDatasource() throws SQLException {
-        Connection connection = dbUtils.getConnection("xxx");
+        Connection connection = dbUtils.getConnection("DBCP");
+
     }
 
     @Test

@@ -1,6 +1,6 @@
 package com.edu.nbu.dal.dao;
 
-import com.edu.nbu.dal.po.User;
+import com.edu.nbu.dal.po.UserPO;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -15,7 +15,7 @@ public class UserDao {
      * @param id
      * @return
      */
-    User selectById(Long id){
+    UserPO selectById(Long id){
         return null;
     };
 }

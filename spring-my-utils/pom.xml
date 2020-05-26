@@ -13,7 +13,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <v.jackson.version>2.9.8</v.jackson.version>
+        <v.jackson.version>2.11.0</v.jackson.version>
     </properties>
 
     <dependencies>

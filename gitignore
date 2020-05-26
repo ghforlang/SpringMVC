@@ -3,16 +3,16 @@
 
 
 /target/
-.idea/
+/.idea/
 out/
 lib/
-
+.idea/
 
 #.iml文件
 *.iml
 
 # Log file
-*.log
+/*.log
 
 # BlueJ files
 *.ctxt

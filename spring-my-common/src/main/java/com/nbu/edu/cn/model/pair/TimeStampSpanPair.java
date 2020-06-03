@@ -35,7 +35,7 @@ public class TimeStampSpanPair extends TimeSpanDescriminator<Long> implements Sp
 
     @Override
     public boolean hasInterSection(SpanPair<Long> sp) {
-        return Objects.isNull(sp) || !isValid() || !sp.isValid() || !(to < sp.from() || from > sp.to());
+        return Objects.isNull(sp) || !isValid() || !sp.isValid() || (to > sp.from() && from < sp.to());
     }
 
     @Override

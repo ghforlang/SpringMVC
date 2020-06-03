@@ -10,8 +10,8 @@ import java.util.Date;
 
 public class TimeSpanUtilsTest {
     private static String fromDateStr = "2020-04-27 15:22:00";
-    private static String toDateStr = "2021-04-27 15:22:20";
-    private static String fromDateStr2 = "2020-04-27 15:21:21";
+    private static String toDateStr = "2020-04-27 15:22:20";
+    private static String fromDateStr2 = "2020-04-27 15:22:19";
     private static String toDateStr2 = "2020-04-27 15:22:50";
 
     //phrase1

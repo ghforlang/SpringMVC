@@ -44,7 +44,7 @@ public class DateSpanPair extends TimeSpanDescriminator<Date> implements SpanPai
 
     @Override
     public boolean hasInterSection(SpanPair<Date> sp) {
-        return Objects.isNull(sp) || !isValid() || !sp.isValid() || !(to.before(sp.from()) || from.after(sp.to()));
+        return Objects.isNull(sp) || !isValid() || !sp.isValid() || (to.after(sp.from()) && from.before(sp.to()));
     }
 
     public boolean isCrossDay(){

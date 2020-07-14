@@ -4,7 +4,9 @@ import com.nbu.edu.cn.exception.BusinessExceptionAssert;
 
 public enum ResponseEnum implements BusinessExceptionAssert {
     ILLEGAL_ARGS("1111","非法参数"),
-    BAD_REQUEST("1000","bad Request");
+    BAD_REQUEST("1000","bad Request"),
+    BAD_UTILS("1100","工具类异常")
+    ;
 
     /**
      * 响应code

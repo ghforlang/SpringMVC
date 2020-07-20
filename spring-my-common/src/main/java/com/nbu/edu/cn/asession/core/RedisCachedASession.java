@@ -8,9 +8,11 @@ import org.springframework.data.redis.core.BoundHashOperations;
 import org.springframework.data.redis.core.BoundZSetOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 @Slf4j
 public class RedisCachedASession implements CachedASession {
@@ -32,7 +34,7 @@ public class RedisCachedASession implements CachedASession {
     private BoundHashOperations<String,String,Object> aSessionOps;
 
     /**
-     * 过期session操作
+     * 存放session过期时间
      */
     private BoundZSetOperations<String,String> aSessionExpireOps;
 
@@ -92,61 +94,98 @@ public class RedisCachedASession implements CachedASession {
 
     @Override
     public Map<String, Object> getAttributes() {
-        return null;
+        Map<String,Object> allAttr = aSessionOps.entries();
+        Map<String,Object> result = new HashMap<>(allAttr.size());
+        int beginIndex = aSessionStoreConfig.getaSessionAttrKeyPrefix().length();
+        allAttr.forEach((key,obj) ->{
+            if(key.startsWith(aSessionStoreConfig.getaSessionAttrKeyPrefix())){
+                result.put(key.substring(beginIndex),obj);
+            }
+        });
+        return result;
     }
 
     @Override
     public <T> T getAttribute(String attributeName) {
-        return null;
+        try{
+            return (T)aSessionOps.get(aSessionStoreConfig.getaSessionAttrKeyPrefix().concat(attributeName));
+        }catch (Exception e){
+            log.error("查询attr错误:" + aSessionId + "|" + attributeName);
+            return null;
+        }
     }
 
     @Override
     public void setAttribute(String attributeName, Object attributeValue) {
-
+        try{
+            aSessionOps.put(aSessionStoreConfig.getaSessionAttrKeyPrefix().concat(attributeName),attributeValue);
+        }catch (Exception e){
+            log.error("设置attr错误:" + aSessionId + "|" + attributeName);
+        }
     }
 
     @Override
     public void removeAttribute(String attributeName) {
-
+        try{
+            aSessionOps.delete(aSessionStoreConfig.getaSessionAttrKeyPrefix().concat(attributeName));
+        }catch (Exception e){
+            log.error("删除attr错误:" + aSessionId + "|" + attributeName);
+        }
     }
 
     @Override
     public void delete() {
-
+        redisTemplate.delete(aSessionStoreConfig.getASessionKeyPrefix().concat(aSessionId));
+        aSessionExpireOps.remove(aSessionId);
+        this.redisTemplate = null;
+        this.aSessionExpireOps = null;
+        this.aSessionOps = null;
     }
 
     @Override
     public void using() {
-
+        log.info("aSession is using!");
+        this.lastAccessedTime = System.currentTimeMillis();
+        this.aSessionOps.put(Constants.LAST_ACCESS_TIME,lastAccessedTime);
+        this.aSessionExpireOps.add(aSessionId,lastAccessedTime + TimeUnit.SECONDS.toMillis(aSessionStoreConfig.getMaxInactiveInterval()));
+        this.redisTemplate.expire(aSessionOps.getKey(),aSessionStoreConfig.getMaxInactiveInterval(),TimeUnit.SECONDS);
     }
 
     @Override
     public long getCreateTime() {
-        return 0;
+        return this.createTime;
     }
 
     @Override
     public long getLastAccessTime() {
-        return 0;
+        return this.lastAccessedTime;
     }
 
     @Override
     public int getMaxInactiveInterval() {
-        return 0;
+        return aSessionStoreConfig.getMaxInactiveInterval();
     }
 
     @Override
     public void setMaxInactiveInterval(int maxInactiveInterval) {
-
+        aSessionStoreConfig.setMaxInactiveInterval(maxInactiveInterval);
     }
 
     @Override
     public long expiredTime() {
-        return 0;
+        if(aSessionStoreConfig.getMaxInactiveInterval() <= 0){
+            return 0;
+        }
+
+        return lastAccessedTime + TimeUnit.SECONDS.toMillis(aSessionStoreConfig.getMaxInactiveInterval());
     }
 
     @Override
     public boolean isExpired() {
-        return false;
+        if(aSessionStoreConfig.getMaxInactiveInterval() <= 0){
+            return false;
+        }
+
+        return System.currentTimeMillis() - TimeUnit.SECONDS.toMillis(aSessionStoreConfig.getMaxInactiveInterval()) >= lastAccessedTime;
     }
 }

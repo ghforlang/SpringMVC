@@ -1,7 +1,9 @@
 package com.nbu.edu.cn.asession.core;
 
 import com.nbu.edu.cn.asession.core.ids.AsessionIdGenerator;
+import com.nbu.edu.cn.exception.BaseException;
 import com.nbu.edu.cn.exception.ResponseEnum;
+import lombok.SneakyThrows;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.HashMap;
@@ -42,6 +44,7 @@ public class MapASession implements ASession{
         this.id = id;
     }
 
+    @SneakyThrows(BaseException.class)
     public MapASession(ASession aSession){
         if(Objects.isNull(aSession) || StringUtils.isBlank(aSession.getASessionId())){
             throw ResponseEnum.BAD_REQUEST.newException("Session can not be null or ''!");

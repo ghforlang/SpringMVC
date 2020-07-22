@@ -2,7 +2,7 @@ package com.nbu.edu.cn.asession.common.http.conf;
 
 import com.nbu.edu.cn.asession.core.config.DefaultASessionConfig;
 
-public class HttpASessionCookieConfig extends DefaultASessionConfig {
+public class ASessionHttpCookieConfig extends DefaultASessionConfig {
 
     /**
      * cookie path
@@ -26,7 +26,7 @@ public class HttpASessionCookieConfig extends DefaultASessionConfig {
         return this.cookiePath;
     }
 
-    public HttpASessionCookieConfig setCookiePath(String cookiePath){
+    public ASessionHttpCookieConfig setCookiePath(String cookiePath){
         this.cookiePath = cookiePath;
         return this;
     }
@@ -36,7 +36,7 @@ public class HttpASessionCookieConfig extends DefaultASessionConfig {
     }
 
 
-    public HttpASessionCookieConfig setCookieDomain(String cookieDomain){
+    public ASessionHttpCookieConfig setCookieDomain(String cookieDomain){
         this.cookieDomain = cookieDomain;
         return this;
     }
@@ -45,7 +45,7 @@ public class HttpASessionCookieConfig extends DefaultASessionConfig {
         return maxASessionIdSize;
     }
 
-    public HttpASessionCookieConfig setMaxASessionIdSize(int maxASessionIdSize){
+    public ASessionHttpCookieConfig setMaxASessionIdSize(int maxASessionIdSize){
         this.maxASessionIdSize = maxASessionIdSize;
         return this;
     }
@@ -54,7 +54,7 @@ public class HttpASessionCookieConfig extends DefaultASessionConfig {
         return aSessionIdSeperator;
     }
 
-    public HttpASessionCookieConfig setASessionIdSeperator(String aSessionIdSeperator){
+    public ASessionHttpCookieConfig setASessionIdSeperator(String aSessionIdSeperator){
         this.aSessionIdSeperator = aSessionIdSeperator;
         return this;
     }

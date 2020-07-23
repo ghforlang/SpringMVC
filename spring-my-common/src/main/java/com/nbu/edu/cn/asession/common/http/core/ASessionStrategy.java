@@ -16,7 +16,7 @@ public interface ASessionStrategy extends ASessionHttpConvert{
      * 获取request内部的aSessionId
      * @return
      */
-    String getRequestedASessionId();
+    String getRequestedASessionId(HttpServletRequest request);
 
     /**
      * 创建新aSession

@@ -4,7 +4,6 @@ import com.nbu.edu.cn.asession.core.ASession;
 import com.nbu.edu.cn.asession.core.CachedASession;
 import com.nbu.edu.cn.asession.core.RedisCachedASession;
 import com.nbu.edu.cn.asession.core.config.ASessionRedisConfig;
-import com.nbu.edu.cn.asession.core.config.ASessionStoreConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
 

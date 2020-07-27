@@ -61,4 +61,15 @@ public class DefaultASessionConfig implements ASessionConfig{
         return this;
     }
 
+    public void setaSessionIdFieldName(String aSessionIdFieldName) {
+        this.aSessionIdFieldName = aSessionIdFieldName;
+    }
+
+    public void setaSessionVerifyFieldName(String aSessionVerifyFieldName) {
+        this.aSessionVerifyFieldName = aSessionVerifyFieldName;
+    }
+
+    public void setMaxInactiveInterval(int maxInactiveInterval) {
+        this.maxInactiveInterval = maxInactiveInterval;
+    }
 }

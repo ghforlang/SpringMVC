@@ -10,9 +10,7 @@ public interface ASessionOperation<S extends ASession> {
      * @param aSessionId
      * @return
      */
-    S
-
-    create(String aSessionId);
+    S create(String aSessionId);
 
     /**
      * 保存

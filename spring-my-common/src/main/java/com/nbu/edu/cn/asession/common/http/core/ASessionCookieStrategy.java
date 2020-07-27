@@ -104,7 +104,7 @@ public class ASessionCookieStrategy implements ASessionStrategy{
         return aSessionHttpCookieConfig;
     }
 
-    public ASessionHttpCookieConfig setaSessionHttpCookieConfig(ASessionHttpCookieConfig aSessionHttpCookieConfig) {
+    public ASessionCookieStrategy setaSessionHttpCookieConfig(ASessionHttpCookieConfig aSessionHttpCookieConfig) {
         this.aSessionHttpCookieConfig = aSessionHttpCookieConfig;
         return this;
     }

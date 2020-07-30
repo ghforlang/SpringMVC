@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <import resource="classpath*:demo-redis-config.xml"/>
+
+    <bean id="sessionKeySerializer" class="org.springframework.data.redis.serializer.StringRedisSerializer"/>
+
+    <bean id="sessionValueSerializer" class="com.nbu.edu.cn.utils.serializer.kryo.AKryoCachedSerializer">
+        <property name="serializerPool">
+            <bean class="org.apache.commons.pool2.impl.GenericObjectPool">
+                <constructor-arg index="0" name="factory">
+                    <bean class="com.nbu.edu.cn.utils.serializer.kryo.AKryoSerializerFactory"/>
+                </constructor-arg>
+
+                <constructor-arg index="1" name="config">
+                    <bean class="org.apache.commons.pool2.impl.GenericObjectPoolConfig"
+                          p:minIdle="10"
+                          p:maxIdle="20"
+                          p:maxTotal="500"
+                          p:maxWaitMillis="1500"/>
+                </constructor-arg>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="sessionTemplate" class="org.springframework.data.redis.core.RedisTemplate">
+        <property name="connectionFactory" ref="redisConnectionFactory"/>
+        <property name="keySerializer" ref="sessionKeySerializer"/>
+        <property name="valueSerializer" ref="sessionValueSerializer"/>
+        <property name="defaultSerializer" ref="sessionValueSerializer"/>
+        <property name="hashKeySerializer" ref="sessionKeySerializer"/>
+        <property name="hashValueSerializer" ref="sessionValueSerializer"/>
+    </bean>
+
+    <bean id="aSessionRedisConfig" class="com.nbu.edu.cn.asession.core.config.ASessionRedisConfig">
+        <property name="ASessionAttrKeyPrefix" value="demo:aSession:"/>
+        <property name="ASessionKeyPrefix" value="demo:"/>
+        <property name="expireASessionKey" value="expireASessionKey"/>
+        <property name="maxInactiveInterval" value="36000"/>
+     </bean>
+
+    <bean id="cachedSessionOperation" class="com.nbu.edu.cn.asession.core.operation.CachedSessionOperation">
+        <constructor-arg index="0" name="redisTemplate" ref="sessionTemplate"/>
+        <constructor-arg index="1" name="sessionStoreConfig" ref="aSessionRedisConfig"/>
+    </bean>
+
+    <bean id="aSessionHttpCookieConfig" class="com.nbu.edu.cn.asession.common.http.conf.ASessionHttpCookieConfig">
+        <property name="maxASessionIdSize" value="10"/>
+        <property name="cookieDomain" value=""/>
+        <property name="cookiePath" value="/"/>
+        <property name="aSessionIdFieldName" value="demo:aSessionId"/>
+    </bean>
+
+    <bean id="aSessionCookieStrategy" class="com.nbu.edu.cn.asession.common.http.core.ASessionCookieStrategy">
+        <property name="aSessionHttpCookieConfig" ref="aSessionHttpCookieConfig"/>
+    </bean>
+
+
+    <bean id="aSessionFilter" class="com.nbu.edu.cn.asession.core.ASessionFilter">
+        <constructor-arg index="0" name="operation" ref="cachedSessionOperation"/>
+        <constructor-arg index="1" name="strategy" ref="aSessionCookieStrategy"/>
+    </bean>
+</beans>

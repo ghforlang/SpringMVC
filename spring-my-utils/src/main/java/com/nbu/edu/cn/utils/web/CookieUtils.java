@@ -1,4 +1,4 @@
-package com.nbu.edu.cn.utils;
+package com.nbu.edu.cn.utils.web;
 
 import com.nbu.edu.cn.exception.ResponseEnum;
 import lombok.experimental.UtilityClass;

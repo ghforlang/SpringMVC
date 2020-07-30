@@ -1,4 +1,4 @@
-package com.nbu.edu.cn.utils;
+package com.nbu.edu.cn.utils.web;
 
 import lombok.experimental.UtilityClass;
 

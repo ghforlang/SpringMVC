@@ -19,6 +19,7 @@
         <v.commons.collections>4.4</v.commons.collections>
         <v.apache.zookeeper.version>3.6.1</v.apache.zookeeper.version>
         <v.apache.pool2.version>2.6.1</v.apache.pool2.version>
+        <v.okhttp3.version>4.5.0</v.okhttp3.version>
     </properties>
 
 
@@ -32,6 +33,7 @@
         <module>spring-my-biz</module>
         <module>spring-my-common</module>
         <module>spring-my-session</module>
+        <module>spring-my-http</module>
     </modules>
 
     <dependencyManagement>
@@ -143,6 +145,11 @@
                 <groupId>org.apache.zookeeper</groupId>
                 <artifactId>zookeeper</artifactId>
                 <version>${v.apache.zookeeper.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.squareup.okhttp3</groupId>
+                <artifactId>okhttp</artifactId>
+                <version>${v.okhttp3.version}</version>
             </dependency>
 
         </dependencies>

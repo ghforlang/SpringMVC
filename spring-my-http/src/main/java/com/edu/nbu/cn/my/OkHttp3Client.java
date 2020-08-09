@@ -9,7 +9,7 @@ import okhttp3.*;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Time;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
@@ -75,12 +75,19 @@ public class OkHttp3Client {
         return response.body().string();
     }
 
-    public String post(String url,String param){
-
+    public String post(String url,String param) throws IOException {
+        return post(url,param,null);
     }
 
-    public String post(String url,String param,Headers headers){
-        RequestBody requestBody = RequestBody.create(HttpConstants.JSON.,);
+    public String post(String url,String param,Headers headers) throws IOException {
+        RequestBody requestBody = RequestBody.create(param,HttpConstants.JSON);
+        Request.Builder builder = new Request.Builder();
+        if(Objects.nonNull(headers)){
+            builder = builder.headers(headers);
+        }
+        Request postRequest = builder.post(requestBody).url(url).build();
+        Response response = httpClient.newCall(postRequest).execute();
+        return response.body().string();
     }
 
 }

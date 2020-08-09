@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="httpClient" class="okhttp3.OkHttpClient"/>
+
+    <bean id="okHttp3Client" class="com.edu.nbu.cn.my.OkHttp3Client">
+        <property name="connectionTimeoutMills" value="10000"/>
+        <property name="httpClient" ref="httpClient"/>
+        <property name="readTimeoutMills" value="30000"/>
+        <property name="writeTimeoutMills" value="10000"/>
+        <property name="maxIdleConnections" value="5"/>
+        <property name="keepAliveDurationMills" value="30000"/>
+    </bean>
+    
+</beans>

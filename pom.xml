@@ -20,6 +20,10 @@
         <v.apache.zookeeper.version>3.6.1</v.apache.zookeeper.version>
         <v.apache.pool2.version>2.6.1</v.apache.pool2.version>
         <v.okhttp3.version>4.5.0</v.okhttp3.version>
+        <v.jackson.version>2.9.8</v.jackson.version>
+        <v.validator.version>6.0.20.Final</v.validator.version>
+        <v.javax.validation.version>1.1.0.Final</v.javax.validation.version>
+        <v.validator.version>6.0.18.Final</v.validator.version>
     </properties>
 
 
@@ -151,6 +155,39 @@
                 <artifactId>okhttp</artifactId>
                 <version>${v.okhttp3.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${v.jackson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${v.jackson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${v.jackson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
+                <version>${v.javax.validation.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.hibernate.validator</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${v.validator.version}</version>
+            </dependency>
+
+
+
 
         </dependencies>
     </dependencyManagement>

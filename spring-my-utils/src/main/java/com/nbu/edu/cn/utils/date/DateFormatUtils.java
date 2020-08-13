@@ -4,19 +4,19 @@ import lombok.experimental.UtilityClass;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.*;
 
 @UtilityClass
 public class DateFormatUtils {
 
-    public static final String DATE_FORMAT_24H = "yyyy-MM-dd HH:mm:ss";
-    public static final String DATE_FORMAT_12H = "yyyy-MM-dd hh:mm:ss";
+
 
     private static final ThreadLocal<SimpleDateFormat> DEFAULT_DATE_TIME_FORMAT_24H =
             new ThreadLocal<SimpleDateFormat>(){
                 @Override
                 protected SimpleDateFormat initialValue() {
-                    return new SimpleDateFormat(DATE_FORMAT_24H);
+                    return new SimpleDateFormat(DateFormatConstants.DATETIME_FORMAT_24H);
                 }
             };
 
@@ -30,7 +30,7 @@ public class DateFormatUtils {
         try {
             return DEFAULT_DATE_TIME_FORMAT_24H.get().parse(dateTimeStr);
         } catch (ParseException e) {
-            throw new RuntimeException("dateTimeStr:" + dateTimeStr + "不符合" + DATE_FORMAT_24H + "格式",e);
+            throw new RuntimeException("dateTimeStr:" + dateTimeStr + "不符合" + DateFormatConstants.DATETIME_FORMAT_24H + "格式",e);
         }
     }
 
@@ -42,5 +42,32 @@ public class DateFormatUtils {
    public static String parseToStr(Date date){
         return DEFAULT_DATE_TIME_FORMAT_24H.get().format(date);
    }
+
+   public static Date getStartOfDay(Date date){
+       Calendar calendar = Calendar.getInstance(TimeZone.getDefault(), Locale.CHINA);
+       if(Objects.nonNull(date)){
+           calendar.setTime(date);
+       }
+       calendar.set(Calendar.HOUR_OF_DAY,0);
+       calendar.set(Calendar.MINUTE,0);
+       calendar.set(Calendar.SECOND,0);
+       calendar.set(Calendar.MILLISECOND,0);
+       return calendar.getTime();
+   }
+
+   public static Date getEndOfDay(Date date){
+       Calendar calendar = Calendar.getInstance(TimeZone.getDefault(), Locale.CHINA);
+       if(Objects.nonNull(date)){
+           calendar.setTime(date);
+       }
+       calendar.set(Calendar.HOUR_OF_DAY,23);
+       calendar.set(Calendar.MINUTE,59);
+       calendar.set(Calendar.SECOND,59);
+       calendar.set(Calendar.MILLISECOND,999);
+       return calendar.getTime();
+   }
+
+
+
 
 }

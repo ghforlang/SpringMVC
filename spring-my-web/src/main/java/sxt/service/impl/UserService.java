@@ -1,7 +1,7 @@
 package sxt.service.impl;
 
 import sxt.dao.UserDao;
-import com.edu.nbu.dal.po.User;
+//import com.edu.nbu.dal.po.User;
 import sxt.service.IUserService;
 
 /**
@@ -9,12 +9,13 @@ import sxt.service.IUserService;
  */
 public class UserService implements IUserService {
     private UserDao userDao;
+
     @Override
     public void add(String uname) {
-        System.out.println("UserService.add()");
-        User u = new User();
-        u.setUname(uname);
-        userDao.add(u);
+//        System.out.println("UserService.add()");
+//        User u = new User();
+//        u.setUname(uname);
+//        userDao.add(u);
     }
 
     public UserDao getUserDao() {

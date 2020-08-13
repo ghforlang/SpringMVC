@@ -1,5 +1,6 @@
 package com.nbu.edu.cn.utils.web;
 
+import com.nbu.edu.cn.exception.BaseException;
 import com.nbu.edu.cn.exception.ResponseEnum;
 import lombok.experimental.UtilityClass;
 import org.apache.commons.lang3.ArrayUtils;
@@ -12,7 +13,7 @@ import java.util.Objects;
 @UtilityClass
 public class CookieUtils {
 
-    public static Cookie getCookie(HttpServletRequest request,String name){
+    public static Cookie getCookie(HttpServletRequest request,String name) throws BaseException {
         if(Objects.isNull(request) || StringUtils.isBlank(name)){
             throw ResponseEnum.ILLEGAL_ARGS.newException("request or name can not be null !");
         }

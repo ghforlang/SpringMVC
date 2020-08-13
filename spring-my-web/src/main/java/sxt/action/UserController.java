@@ -14,7 +14,6 @@ public class UserController implements Controller {
 
     private IUserService userService;
 
-    @Override
     public ModelAndView handleRequest(HttpServletRequest req, HttpServletResponse httpServletResponse) throws Exception {
         System.out.println("HelloController.handleRequest()");
         req.setAttribute("a", "aaaa");

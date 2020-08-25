@@ -5,14 +5,21 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.*;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @UtilityClass
 public class StreamUtils {
-
+    /**
+     * Stream特性：非数据结构；不支持索引访问；但是很容易生成数组或者list；惰性化；并行能力；可以是无限的；
+     * stream只有两种类型操作：Intermediate（中间操作） 和 Terminal(终止型)
+     * 区别:一个Stream后可以有多个Intermediate 操作，目的主要是打开流，做出某种程度的数据映射/过滤，然后返回一个新的流，交给下一个操作使用；这类操作是惰性的，也就是说仅仅调用到这类方法并没有真正开始流的遍历
+     *   一个Stream后只能有一个terminal操作，该操作执行完之后，流就被使用完了，无法再被操作；terminal操作的执行才会真正开始流的遍历，并且会生成一个结果或者sideEffect
+     */
     private static final List EMPTY_LIST = new ArrayList();
     private static final Set EMPTY_SET = new HashSet<>();
     private static final Map EMPTY_MAP = new HashMap<>();
@@ -125,6 +132,17 @@ public class StreamUtils {
     }
 
     /**
+     * 找到列表中符合条件的元素,这里的finaAny与findFirst效果类似
+     * @param list
+     * @param predicate
+     * @param <T>
+     * @return
+     */
+    public static <T> T filter(List<T> list ,Predicate<T> predicate){
+        return CollectionUtils.isEmpty(list) ? null : list.stream().filter(predicate).findAny().orElse(null);
+    }
+
+    /**
      * 简单的数据转list
      * @param arrays
      * @param mapper
@@ -137,6 +155,40 @@ public class StreamUtils {
     }
 
     /**
+     * 完全满足条件
+     * @param col
+     * @param predicate
+     * @param <T>
+     * @return
+     */
+    public static <T> boolean allMatch(Collection<T> col,Predicate<T> predicate){
+        return CollectionUtils.isEmpty(col) ? false : col.stream().allMatch(predicate);
+    }
+
+    /**
+     * 任一满足条件
+     * @param col
+     * @param predicate
+     * @param <T>
+     * @return
+     */
+    public static <T> boolean anyMatch(Collection<T> col,Predicate<T> predicate){
+        return CollectionUtils.isEmpty(col) ? false : col.stream().anyMatch(predicate);
+    }
+
+    /**
+     * 全部不满足条件
+     * @param col
+     * @param predicate
+     * @param <T>
+     * @return
+     */
+    public static <T> boolean nonMatch(Collection<T> col,Predicate<T> predicate){
+        return CollectionUtils.isEmpty(col) ? true : col.stream().noneMatch(predicate);
+    }
+
+
+    /**
      * collection to stream
      * @param col
      * @param <T>
@@ -144,5 +196,16 @@ public class StreamUtils {
      */
     public static <T> Stream<T> toStream(Collection<T> col){
         return CollectionUtils.isEmpty(col) ? Stream.empty() : col.stream();
+    }
+
+    /**
+     * 复制流，peek操作对每个元素执行操作并返回一个新的Stream
+     * @param col
+     * @param mapper
+     * @param <T>
+     * @return
+     */
+    public static <T> Stream<T> peekStream(Collection<T> col, Consumer<T> mapper){
+        return CollectionUtils.isEmpty(col) ? Stream.empty() : col.stream().peek(mapper);
     }
 }

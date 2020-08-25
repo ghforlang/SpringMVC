@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class StreamUtilsTest {
 
@@ -21,6 +23,16 @@ public class StreamUtilsTest {
         testCollectionToList(set);
         testCollectionToSet(list);
         testToGroupMap(list);
+        testFilter(list);
+
+        Stream<String> stream = buildStrStream();
+        String[] strArr = stream.toArray(String[]::new);
+        System.out.println(JackSonUtils.toJsonString(strArr));
+        /**
+         * 一个流只能使用一次
+         * Exception : stream has already been operated upon or closed
+         */
+//        List<String> list1 = stream.collect(Collectors.toList());
     }
 
 
@@ -49,6 +61,11 @@ public class StreamUtilsTest {
         System.out.println(JackSonUtils.toJsonString(StreamUtils.toGroupMap(list,v -> v %3)));
     }
 
+    public static void testFilter(List<Integer> list){
+        System.out.println(JackSonUtils.toJsonString(StreamUtils.filter(list,v -> v % 2 == 0)));
+    }
+
+
     private static List<Integer> buildList(){
         List<Integer> list = new ArrayList<>();
         for(int i=0;i<5 ;i ++){
@@ -63,6 +80,11 @@ public class StreamUtilsTest {
             set.add(i * (i + 1));
         }
         return set;
+    }
+
+    private static  Stream<String> buildStrStream(){
+        Stream<String> strStream = Stream.of("a","b","c");
+        return strStream;
     }
 
 }

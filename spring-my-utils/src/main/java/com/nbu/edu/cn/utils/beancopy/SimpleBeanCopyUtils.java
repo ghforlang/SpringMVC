@@ -10,7 +10,7 @@ import java.util.Set;
 
 public class SimpleBeanCopyUtils {
 
-    private static final MapperFactory mapperFactory = BaseConverter.getMapperFactory();
+    private static final MapperFactory mapperFactory = OrikaBase.getMapperFactory();
     private static final MapperFacade simpleMapper = mapperFactory.getMapperFacade();
 
     /**

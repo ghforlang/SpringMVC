@@ -1,4 +1,4 @@
-package com.nbu.edu.cn.utils.beancopy;
+package com.nbu.edu.cn.utils.beancopy.orika;
 
 import ma.glasnost.orika.MapperFacade;
 import ma.glasnost.orika.MapperFactory;

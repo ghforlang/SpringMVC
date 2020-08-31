@@ -1,9 +1,9 @@
 package com.nbu.edu.cn.utils.beancopy;
 
 import com.nbu.edu.cn.utils.JackSonUtils;
-import com.nbu.edu.cn.utils.model.orika.StudentBO;
-import com.nbu.edu.cn.utils.model.StudentBeanConverter;
-import com.nbu.edu.cn.utils.model.orika.StudentDTO;
+import com.nbu.edu.cn.utils.model.StudentBO;
+import com.nbu.edu.cn.utils.beancopy.orika.StudentBeanConverter;
+import com.nbu.edu.cn.utils.model.StudentDTO;
 
 public class StudentBeanConverterTest {
 

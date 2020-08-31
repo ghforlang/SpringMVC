@@ -1,4 +1,4 @@
-package com.nbu.edu.cn.utils.beancopy;
+package com.nbu.edu.cn.utils.beancopy.orika;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

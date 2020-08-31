@@ -1,9 +1,8 @@
-package com.nbu.edu.cn.utils.model.orika;
+package com.nbu.edu.cn.utils.model;
 
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
 import java.util.List;
 
 @Getter

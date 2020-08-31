@@ -1,8 +1,8 @@
-package com.nbu.edu.cn.utils.beancopy;
+package com.nbu.edu.cn.utils.beancopy.orika;
 
-import com.nbu.edu.cn.utils.beancopy.customconverter.BaseConverter;
-import com.nbu.edu.cn.utils.beancopy.customconverter.LocalDateTimeFormatConverter;
-import com.nbu.edu.cn.utils.beancopy.customconverter.example.Type2NameConverter;
+import com.nbu.edu.cn.utils.beancopy.orika.customconverter.BaseConverter;
+import com.nbu.edu.cn.utils.beancopy.orika.customconverter.LocalDateTimeFormatConverter;
+import com.nbu.edu.cn.utils.beancopy.orika.customconverter.Type2NameConverter;
 
 public enum OrikaConverterEnum {
     TYPE_2_NAME("type2NameConverter", Type2NameConverter.getInstance()),

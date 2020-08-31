@@ -1,6 +1,6 @@
-package com.nbu.edu.cn.utils.beancopy;
+package com.nbu.edu.cn.utils.beancopy.orika;
 
-import com.nbu.edu.cn.utils.beancopy.customconverter.BaseConverter;
+import com.nbu.edu.cn.utils.beancopy.orika.customconverter.BaseConverter;
 import ma.glasnost.orika.BoundMapperFacade;
 import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.converter.ConverterFactory;

@@ -1,4 +1,4 @@
-package com.nbu.edu.cn.utils.model.orika;
+package com.nbu.edu.cn.utils.model;
 
 import org.apache.commons.lang3.StringUtils;
 

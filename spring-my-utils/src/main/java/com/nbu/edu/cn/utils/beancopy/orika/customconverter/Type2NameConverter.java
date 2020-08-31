@@ -1,7 +1,6 @@
-package com.nbu.edu.cn.utils.beancopy.customconverter.example;
+package com.nbu.edu.cn.utils.beancopy.orika.customconverter;
 
-import com.nbu.edu.cn.utils.beancopy.customconverter.BaseConverter;
-import com.nbu.edu.cn.utils.model.orika.CourseEnum;
+import com.nbu.edu.cn.utils.model.CourseEnum;
 import ma.glasnost.orika.MappingContext;
 import ma.glasnost.orika.metadata.Type;
 

@@ -1,4 +1,4 @@
-package com.nbu.edu.cn.utils.beancopy.customconverter;
+package com.nbu.edu.cn.utils.beancopy.orika.customconverter;
 
 import ma.glasnost.orika.MappingContext;
 import ma.glasnost.orika.metadata.Type;

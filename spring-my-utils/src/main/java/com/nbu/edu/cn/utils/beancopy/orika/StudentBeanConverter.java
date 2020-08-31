@@ -1,14 +1,10 @@
-package com.nbu.edu.cn.utils.model;
+package com.nbu.edu.cn.utils.beancopy.orika;
 
-import com.nbu.edu.cn.utils.beancopy.CopyTriplet;
-import com.nbu.edu.cn.utils.beancopy.OrikaBase;
-import com.nbu.edu.cn.utils.beancopy.OrikaConverterEnum;
-import com.nbu.edu.cn.utils.beancopy.SimpleBeanCopyUtils;
-import com.nbu.edu.cn.utils.beancopy.customconverter.BaseConverter;
-import com.nbu.edu.cn.utils.model.orika.CourseAndScoreBO;
-import com.nbu.edu.cn.utils.model.orika.CourseAndScoreDTO;
-import com.nbu.edu.cn.utils.model.orika.StudentBO;
-import com.nbu.edu.cn.utils.model.orika.StudentDTO;
+import com.nbu.edu.cn.utils.beancopy.orika.customconverter.BaseConverter;
+import com.nbu.edu.cn.utils.model.CourseAndScoreBO;
+import com.nbu.edu.cn.utils.model.CourseAndScoreDTO;
+import com.nbu.edu.cn.utils.model.StudentBO;
+import com.nbu.edu.cn.utils.model.StudentDTO;
 import lombok.experimental.UtilityClass;
 import ma.glasnost.orika.BoundMapperFacade;
 

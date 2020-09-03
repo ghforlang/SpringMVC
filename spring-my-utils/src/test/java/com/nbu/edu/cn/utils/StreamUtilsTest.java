@@ -2,10 +2,7 @@ package com.nbu.edu.cn.utils;
 
 import com.nbu.edu.cn.utils.stream.StreamUtils;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -28,6 +25,7 @@ public class StreamUtilsTest {
         Stream<String> stream = buildStrStream();
         String[] strArr = stream.toArray(String[]::new);
         System.out.println(JackSonUtils.toJsonString(strArr));
+        testBuildList();
         /**
          * 一个流只能使用一次
          * Exception : stream has already been operated upon or closed
@@ -65,6 +63,9 @@ public class StreamUtilsTest {
         System.out.println(JackSonUtils.toJsonString(StreamUtils.filter(list,v -> v % 2 == 0)));
     }
 
+    public static void testBuildList(){
+        System.out.println(JackSonUtils.toJsonString(StreamUtils.buildList(new Random()::nextInt,5)));
+    }
 
     private static List<Integer> buildList(){
         List<Integer> list = new ArrayList<>();

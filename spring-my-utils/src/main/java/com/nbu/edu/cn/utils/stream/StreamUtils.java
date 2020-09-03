@@ -26,6 +26,27 @@ public class StreamUtils {
 
 
     /**
+     * 根据supplier生成n个对象的list
+     * @param supplier
+     * @param n
+     * @param <T>
+     * @return
+     */
+    public static <T> List<T> buildList(Supplier<T> supplier,int n){
+        return Stream.generate(supplier).limit(n).collect(Collectors.toList());
+    }
+
+    /**
+     * 根据supplier生成n个对象的list
+     * @param supplier
+     * @param n
+     * @param <T>
+     * @return
+     */
+    public static <T> Set<T> buildSet(Supplier<T> supplier,int n){
+        return Stream.generate(supplier).limit(n).collect(Collectors.toSet());
+    }
+    /**
      * collection to list
      * @param col
      * @param mapper

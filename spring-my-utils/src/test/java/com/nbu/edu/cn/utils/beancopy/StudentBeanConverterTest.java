@@ -12,6 +12,8 @@ public class StudentBeanConverterTest {
     }
 
     public static void testTestMap(){
+//        System.setProperty("ma.glasnost.orika.GeneratedSourceCode.writeSourceFiles","true");
+//        System.setProperty("ma.glasnost.orika.GeneratedSourceCode.writeClassFiles","true");
         StudentBO student = StudentBO.getInstance();
         StudentDTO studentDTO = StudentBeanConverter.convertToStudentDTO(student);
         System.out.println(JackSonUtils.toJsonString(studentDTO));

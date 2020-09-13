@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class LocalContext<T extends ContextAvailable> implements Context{
 
-    private static final ThreadLocal<Object> LOCAL = ThreadLocal.withInitial(Object::new);
+    private static final ThreadLocal<ContextAvailable> LOCAL = new ThreadLocal<>();
 
     private T stored;
     private T nowData;

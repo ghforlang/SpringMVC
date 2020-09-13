@@ -16,21 +16,22 @@ public class LocalContextTest {
         StudentBO studentBO = StudentBO.getInstance();
         studentBO.setName("context-m1");
         localContext1 = LocalContext.newInstance(studentBO);
+        System.out.println(Thread.currentThread().getName() + " after set : " + JackSonUtils.toJsonString(localContext1.get()));
         localContext3 = LocalContext.newInstance(CourseAndScoreBO.getInstance());
-        System.out.println("localContext3: " + JackSonUtils.toJsonString(localContext3.get()));
-        System.out.println("localContext1: " + JackSonUtils.toJsonString(localContext1.get()));
+        System.out.println(Thread.currentThread().getName() + " localContext3: " + JackSonUtils.toJsonString(localContext3.get()));
+        System.out.println(Thread.currentThread().getName() + " localContext1: " + JackSonUtils.toJsonString(localContext1.get()));
         studentBO.setName("context-m1-stored");
         studentBO = localContext1.stored(studentBO);
-        System.out.println("after stored : " + JackSonUtils.toJsonString(studentBO));
+        System.out.println(Thread.currentThread().getName() + " after stored : " + JackSonUtils.toJsonString(studentBO));
         studentBO = localContext1.recall();
-        System.out.println("after recall : " + JackSonUtils.toJsonString(studentBO));
+        System.out.println(Thread.currentThread().getName() + " after recall : " + JackSonUtils.toJsonString(studentBO));
         studentBO = localContext1.reset().get();
-        System.out.println("after reset : " + JackSonUtils.toJsonString(studentBO));
+        System.out.println(Thread.currentThread().getName() + " after reset : " + JackSonUtils.toJsonString(studentBO));
         studentBO = localContext1.recall();
-        System.out.println("after reset - recall : " + JackSonUtils.toJsonString(studentBO));
+        System.out.println(Thread.currentThread().getName() + " after reset - recall : " + JackSonUtils.toJsonString(studentBO));
         localContext1.resetAll();
         studentBO = localContext1.resetAll().get();
-        System.out.println("after resetAll : " + JackSonUtils.toJsonString(studentBO));
+        System.out.println(Thread.currentThread().getName() + " after resetAll : " + JackSonUtils.toJsonString(studentBO));
     }
 
     public void m2(){
@@ -47,16 +48,16 @@ public class LocalContextTest {
         studentBO.setName("context1");
         LocalContext<StudentBO> context1 = LocalContext.newInstance(studentBO);
         StudentBO s3 = context1.get();
-//        System.out.println(JackSonUtils.toJsonString(s3));
-//        System.out.println(studentBO == s3);
-        Thread t1 = new Thread(test::m1);
+        System.out.println("mainThread context1 : " + JackSonUtils.toJsonString(s3));
+        System.out.println(studentBO == s3);
+        Thread t1 = new Thread(test::m1,"t1");
 //        Thread t2 = new Thread(test::m2);
         t1.start();
 //        t2.start();
 
         TimeUnit.MILLISECONDS.sleep(200);
         StudentBO ss1 = test.localContext1.get();
-//        System.out.println(JackSonUtils.toJsonString(ss1));
+        System.out.println("mainThread  at the end : " + JackSonUtils.toJsonString(ss1));
 //        StudentBO ss2 = test.localContext2.get();
 //        System.out.println(JackSonUtils.toJsonString(ss2));
     }

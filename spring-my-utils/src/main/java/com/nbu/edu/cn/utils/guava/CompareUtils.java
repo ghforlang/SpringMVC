@@ -41,7 +41,6 @@ public class CompareUtils {
                 comparisonChain = comparisonChain.compare(ao,bo);
             }
         }
-
         return comparisonChain.result();
     }
 }

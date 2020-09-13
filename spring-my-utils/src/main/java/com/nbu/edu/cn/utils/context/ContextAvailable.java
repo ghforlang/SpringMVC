@@ -1,0 +1,4 @@
+package com.nbu.edu.cn.utils.context;
+
+public interface ContextAvailable {
+}

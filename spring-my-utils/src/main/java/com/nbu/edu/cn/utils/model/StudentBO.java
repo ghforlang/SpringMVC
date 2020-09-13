@@ -1,5 +1,6 @@
 package com.nbu.edu.cn.utils.model;
 
+import com.nbu.edu.cn.utils.context.ContextAvailable;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,7 +10,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class StudentBO {
+public class StudentBO implements ContextAvailable {
     private String id;
     private String name;
     private LocalDateTime birthDay;

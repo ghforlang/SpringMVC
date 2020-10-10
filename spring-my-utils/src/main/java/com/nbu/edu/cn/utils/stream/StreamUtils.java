@@ -20,9 +20,6 @@ public class StreamUtils {
      * 区别:一个Stream后可以有多个Intermediate 操作，目的主要是打开流，做出某种程度的数据映射/过滤，然后返回一个新的流，交给下一个操作使用；这类操作是惰性的，也就是说仅仅调用到这类方法并没有真正开始流的遍历
      *   一个Stream后只能有一个terminal操作，该操作执行完之后，流就被使用完了，无法再被操作；terminal操作的执行才会真正开始流的遍历，并且会生成一个结果或者sideEffect
      */
-    private static final List EMPTY_LIST = new ArrayList();
-    private static final Set EMPTY_SET = new HashSet<>();
-    private static final Map EMPTY_MAP = new HashMap<>();
 
 
     /**
@@ -55,7 +52,7 @@ public class StreamUtils {
      * @return
      */
     public static <T,R> List<R> toList(Collection<T> col,Function<T,R> mapper){
-        return CollectionUtils.isEmpty(col) ? EMPTY_LIST : col.stream().map(mapper).collect(Collectors.toList());
+        return CollectionUtils.isEmpty(col) ? Collections.EMPTY_LIST : col.stream().map(mapper).collect(Collectors.toList());
     }
 
 
@@ -68,7 +65,7 @@ public class StreamUtils {
      * @return
      */
     public static <T,R> List<R> toDistinctList(Collection<T> col,Function<T,R> mapper){
-        return CollectionUtils.isEmpty(col) ? EMPTY_LIST : col.stream().map(mapper).distinct().collect(Collectors.toList());
+        return CollectionUtils.isEmpty(col) ? Collections.EMPTY_LIST : col.stream().map(mapper).distinct().collect(Collectors.toList());
     }
 
     /**
@@ -80,7 +77,7 @@ public class StreamUtils {
      * @return
      */
     public static <T,R> Set<R> toSet(Collection<T> col,Function<T,R> mapper){
-        return CollectionUtils.isEmpty(col) ? EMPTY_SET : col.stream().map(mapper).collect(Collectors.toSet());
+        return CollectionUtils.isEmpty(col) ? Collections.EMPTY_SET : col.stream().map(mapper).collect(Collectors.toSet());
     }
 
     /**
@@ -92,7 +89,7 @@ public class StreamUtils {
      * @return
      */
     public static <T,R> Map<R,List<T>> toGroupMap(Collection<T> col,Function<T,R> classifier){
-        return CollectionUtils.isEmpty(col) ? EMPTY_MAP : col.stream().collect(Collectors.groupingBy(classifier));
+        return CollectionUtils.isEmpty(col) ? Collections.EMPTY_MAP : col.stream().collect(Collectors.groupingBy(classifier));
     }
 
     /**
@@ -106,7 +103,7 @@ public class StreamUtils {
      * @return
      */
     public static <T,K,V> Map<K,V> toMap(Collection<T> col,Function<T,K> keyMapper,Function<T,V> valueMapper){
-        return CollectionUtils.isEmpty(col) ? EMPTY_MAP : col.stream().collect(Collectors.toMap(keyMapper,valueMapper,(key1,key2) -> key2));
+        return CollectionUtils.isEmpty(col) ? Collections.EMPTY_MAP : col.stream().collect(Collectors.toMap(keyMapper,valueMapper,(key1,key2) -> key2));
     }
 
 
@@ -122,7 +119,7 @@ public class StreamUtils {
      */
     public static <T,R1,R2> Map<R1,Map<R2,T>> toGroupMap(List<T> col,Function<T,R1> classifier1,Function<T,R2> classifier2){
         if(CollectionUtils.isEmpty(col)){
-            return EMPTY_MAP;
+            return Collections.EMPTY_MAP;
         }
 
         Map<R1,List<T>> map1 = col.stream().collect(Collectors.groupingBy(classifier1));
@@ -143,7 +140,7 @@ public class StreamUtils {
      */
     public static <T> List<T> listFilter(List<T> list, Predicate<T> ... predicates){
         if(CollectionUtils.isEmpty(list)){
-            return EMPTY_LIST;
+            return Collections.EMPTY_LIST;
         }
 
         for(Predicate<T> p : predicates){
@@ -172,7 +169,7 @@ public class StreamUtils {
      * @return
      */
     public static <T,R> List<R> arrayTrans(T[] arrays,Function<T,R> mapper){
-        return ArrayUtils.isEmpty(arrays) ? EMPTY_LIST : Arrays.asList(arrays).stream().map(mapper).collect(Collectors.toList());
+        return ArrayUtils.isEmpty(arrays) ? Collections.EMPTY_LIST : Arrays.asList(arrays).stream().map(mapper).collect(Collectors.toList());
     }
 
     /**

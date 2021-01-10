@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- 默认单例，除去prototype外，其他scope也都是单例 -->
+    <!-- construtor 方式注入，需要强制定义构造方法-->
+    <import resource="application-context-*.xml"/>
+    <bean id="person" class="com.edu.nbu.demo.begin.Person">
+        <constructor-arg name="name" value="zhangsan"/>
+        <constructor-arg name="age" value="10"/>
+        <constructor-arg name="password" value="123456"/>
+        <constructor-arg name="child" ref="child"/>
+    </bean>
+
+    <bean id="person2" class="com.edu.nbu.demo.begin.Person">
+        <property name="age" value="10"/>
+        <property name="name" value="zhangsan"/>
+        <property name="password" value="123456"/>
+        <property name="child" ref="child"/>
+    </bean>
+</beans>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- construtor 方式注入，需要强制定义构造方法-->
+
+
+
+    <bean id="child" class="com.edu.nbu.demo.begin.Child">
+        <property name="password" value="121445"/>
+        <property name="name" value="zhangsan"/>
+        <property name="age" value="10"/>
+    </bean>
+
+</beans>

@@ -5,7 +5,10 @@
     <!-- 默认单例，除去prototype外，其他scope也都是默认单例 -->
     <!-- construtor 方式注入，需要强制定义构造方法-->
     <import resource="application-context-*.xml"/>
-    <bean id="person" class="com.edu.nbu.demo.begin.Person" scope="singleton">
+
+    <bean id="man" class="com.edu.nbu.demo.begin.Man" abstract="true"/>
+
+    <bean id="person" class="com.edu.nbu.demo.begin.Person" scope="singleton" parent="man" primary="true">
         <constructor-arg name="name" value="zhangsan"/>
         <constructor-arg name="age" value="10"/>
         <constructor-arg name="password" value="123456"/>

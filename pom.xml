@@ -39,6 +39,7 @@
         <module>spring-my-session</module>
         <module>spring-my-http</module>
         <module>spring-my-demo</module>
+        <module>spring-my-router</module>
     </modules>
 
     <dependencyManagement>

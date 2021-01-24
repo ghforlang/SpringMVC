@@ -2,9 +2,11 @@
 *.class
 
 /target/
-/.idea/*.xml
+/.idea/
 out/
 lib/
+.idea/
+/.idea/*.xml
 .idea/*.xml
 
 #.iml文件

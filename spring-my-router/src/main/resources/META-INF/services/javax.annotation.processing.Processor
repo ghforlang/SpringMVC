@@ -1,1 +1,2 @@
 com.nbu.edu.info.router.core.annotation.MyCustomAnnotationHider$MyCustomAnnotationProcessor
+com.nbu.edu.info.router.core.annotation.OtherAnnotationProcessor

@@ -7,7 +7,7 @@ import javax.lang.model.element.TypeElement;
 import java.util.Set;
 
 /**
- * 参照lombok 的 AnnotationProcessorHider设计方式，个人认为，可能是单例原因
+ * 参照lombok 的 AnnotationProcessorHider设计方式，个人认为，可能是单例模式
  */
 public class MyCustomAnnotationHider {
 

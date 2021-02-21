@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 参照spring-beans dtd文件 -->
+<!--  根节点名称 configuration，子节点元素appender、mylogger、root-->
+
+<!ELEMENT configuration (
+      description?,
+      (appender | mylogger | root)*
+)>
+
+<!ELEMENT description (
+    description?
+)>
+
+
+<!-- appender 子元素 -->
+<!ELEMENT appender (
+        appender-ref?
+)>
+
+<!-- appender 属性 -->
+<!ATTLIST appender name CDATA #IMPLIED>
+<!ATTLIST appender class CDATA #IMPLIED>
+
+
+<!ELEMENT mylogger (
+        appender-ref?
+)>
+<!-- mylogger 属性 -->
+<!ATTLIST mylogger name CDATA #IMPLIED>
+<!ATTLIST mylogger class CDATA #IMPLIED>
+
+
+<!ELEMENT root (
+        appender-ref?
+)>
+<!ATTLIST root level (ERROR | WARN | DEBUG | INFO | TRACE) "TRACE">
+
+<!ELEMENT appender-ref EMPTY>
+
+<!--<!ATTLIST configuration default-lazy-init (true | false) "false">-->
+<!ATTLIST description value (default | custom) "default">
+
+

@@ -1,13 +1,14 @@
 <configuration>
 
-    <appender name="std_plain" class="cc.leevi.common.logc.appender.ConsoleAppender">
+    <appender name="CONSOLE" class="com.edu.nbu.info.my.logger.core.appender.ConsoleAppender">
     </appender>
 
-    <logger name="cc.leevi.common.logc">
-        <appender-ref ref="std_plain"/>
-    </logger>
+    <mylogger name="com.edu.nbu.info.my.logger.core.log" class ="com.edu.nbu.info.my.logger.core.log.MyLogger" >
+        <appender-ref ref="CONSOLE"/>
+    </mylogger>
 
     <root level="trace">
-        <appender-ref ref="std_pattern"/>
+        <appender-ref ref="CONSOLE"/>
     </root>
+
 </configuration>

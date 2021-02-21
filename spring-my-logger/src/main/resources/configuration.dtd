@@ -37,6 +37,7 @@
 <!ATTLIST root level (ERROR | WARN | DEBUG | INFO | TRACE) "TRACE">
 
 <!ELEMENT appender-ref EMPTY>
+<!ATTLIST appender-ref ref CDATA #IMPLIED>
 
 <!--<!ATTLIST configuration default-lazy-init (true | false) "false">-->
 <!ATTLIST description value (default | custom) "default">

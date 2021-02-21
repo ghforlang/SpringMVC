@@ -1,5 +1,7 @@
-<configuration>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration SYSTEM "configuration.dtd">
 
+<configuration>
     <appender name="CONSOLE" class="com.edu.nbu.info.my.logger.core.appender.ConsoleAppender">
     </appender>
 
@@ -7,7 +9,7 @@
         <appender-ref ref="CONSOLE"/>
     </mylogger>
 
-    <root level="trace">
+    <root level="TRACE">
         <appender-ref ref="CONSOLE"/>
     </root>
 

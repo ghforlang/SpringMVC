@@ -1,0 +1,13 @@
+<configuration>
+
+    <appender name="std_plain" class="cc.leevi.common.logc.appender.ConsoleAppender">
+    </appender>
+
+    <logger name="cc.leevi.common.logc">
+        <appender-ref ref="std_plain"/>
+    </logger>
+
+    <root level="trace">
+        <appender-ref ref="std_pattern"/>
+    </root>
+</configuration>

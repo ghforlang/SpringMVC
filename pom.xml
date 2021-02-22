@@ -13,7 +13,7 @@
         <v.my.spring.version>5.1.5.RELEASE</v.my.spring.version>
         <v.lombok.version>1.16.20</v.lombok.version>
         <v.junit.version>4.12</v.junit.version>
-        <v.log4j.version>2.12.1</v.log4j.version>
+        <v.log4j.version>2.13.3</v.log4j.version>
         <v.sl4f.version>2.0.0-alpha1</v.sl4f.version>
         <v.commons.lang.version>3.9</v.commons.lang.version>
         <v.commons.collections>4.4</v.commons.collections>

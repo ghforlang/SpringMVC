@@ -24,6 +24,11 @@ public class MyXMLConfiguration implements Configuration{
         this.loggerContext = loggerContext;
     }
 
+    public MyXMLConfiguration(MyConfigurationFactory.ConfigurationBuilder builder){
+        this(builder.getUrl(),builder.getLoggerContext());
+    }
+
+
     @Override
     public void doConfig() {
         try {
@@ -43,4 +48,5 @@ public class MyXMLConfiguration implements Configuration{
     private void parse(Document doc){
         //参数解析
     }
+
 }

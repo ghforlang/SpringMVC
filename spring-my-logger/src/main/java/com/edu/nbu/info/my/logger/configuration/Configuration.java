@@ -6,4 +6,5 @@ public interface Configuration {
      * 加载配置入口
      */
     void doConfig();
+
 }

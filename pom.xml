@@ -10,7 +10,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <v.my.spring.version>5.1.5.RELEASE</v.my.spring.version>
+        <v.my.spring.version>5.2.20.RELEASE</v.my.spring.version>
         <v.lombok.version>1.16.20</v.lombok.version>
         <v.junit.version>4.12</v.junit.version>
         <v.log4j.version>2.12.1</v.log4j.version>
